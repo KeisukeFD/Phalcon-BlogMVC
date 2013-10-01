@@ -56,6 +56,7 @@ $di->set('view', function() use ($config) {
 			$compiler->addFilter('date', 'Utils\\formatDate');
 			$compiler->addFilter('timeAgo', 'Utils\\timeAgoWord');
 			$compiler->addFilter('md', 'Utils\\MarkdownParse');
+			$compiler->addFilter('md5', 'md5');
 
 
 			$compiler->addFunction('generateList', 'Utils\\generateList');

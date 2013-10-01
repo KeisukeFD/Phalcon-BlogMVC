@@ -48,7 +48,7 @@
     <div class="row">
         <hr>
         <div class="col-md-2">
-            <img src="http://lorempicsum.com/futurama/100/100/4" width="100%">
+            <img src="http://1.gravatar.com/avatar/{{ comment.mail|md5 }}?s=100" width="100%">
         </div>
         <div class="col-md-10">
             <p><strong>{{ comment.username }}</strong> {{ comment.created|timeAgo }}</p>
