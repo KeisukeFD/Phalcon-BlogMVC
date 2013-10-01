@@ -60,7 +60,7 @@ $di->set('view', function() use ($config) {
 
 
 			$compiler->addFunction('generateList', 'Utils\\generateList');
-			$compiler->addFunction('dump', 'print_r');
+			$compiler->addFunction('dump', 'Utils\\print_pre');
 
 			return $volt;
 		},

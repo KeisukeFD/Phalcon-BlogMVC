@@ -87,6 +87,13 @@ function timeAgoWord($from_time, $include_seconds = true) {
     }
 }
 
+function print_pre($expression)
+{
+    $css = 'border:1px dashed #06f;background:#69f;padding:1em;text-align:left;';
+    
+    $str = '<pre style="' . $css . '">' . htmlspecialchars(print_r($expression, true)) . '</pre>';
 
+    echo $str;
+}
 
 ?>
