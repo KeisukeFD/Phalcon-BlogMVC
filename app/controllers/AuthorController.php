@@ -25,7 +25,6 @@ class AuthorController extends ControllerBase
 
 
     public function loginAction() {
-        include_once __DIR__ . '/../forms/UsersLoginForm.php';
         $this->view->form = new LoginForm();
     }
 }

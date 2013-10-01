@@ -8,7 +8,13 @@ $loader = new \Phalcon\Loader();
 $loader->registerDirs(
 	array(
 		$config->application->controllersDir,
-        $config->application->modelsDir,
-		$config->application->formsDir
+        $config->application->modelsDir
 	)
+)->register();
+
+$loader->registerClasses(
+    array(
+        'LoginForm' => __DIR__ . '/../../app/forms/UsersLoginForm.php',
+        'CommentForm' => __DIR__ . '/../../app/forms/CommentForm.php',
+    )
 )->register();
