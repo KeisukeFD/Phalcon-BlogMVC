@@ -7,7 +7,8 @@ use Phalcon\DI\FactoryDefault,
 	Phalcon\Mvc\View\Engine\Volt as VoltEngine,
 	Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter,
 	Phalcon\Session\Adapter\Files as SessionAdapter,
-	Phalcon\Cache\Frontend\Output as OutputFrontend;
+	Phalcon\Cache\Frontend\Output as OutputFrontend,
+	Phalcon\Flash\Direct;
 
 
 /**
@@ -98,8 +99,18 @@ $di->set('session', function() {
 	return $session;
 });
 
+//Set up the flash service
+$di->set('flash', function() {
+    return new Direct(array(
+        'error' => 'alert alert-danger',
+        'success' => 'alert alert-success',
+        'notice' => 'alert alert-info'
+    ));
+});
+
 $di->set('elements', function(){
 	include __DIR__ . "/../library/Elements.php";
     return new Elements();
 });
+
 

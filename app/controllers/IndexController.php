@@ -1,5 +1,7 @@
 <?php
 
+use Phalcon\Tag;
+
 class IndexController extends ControllerBase
 {
 
@@ -23,8 +25,31 @@ class IndexController extends ControllerBase
     public function postAction() {
         $slug = $this->dispatcher->getParam("slug");
         $this->view->post = Posts::findFirstBySlug($slug);
+        $form = new CommentForm();
+        $form->error = false;
 
-        $this->view->form = new CommentForm();
+        if($this->request->isPost()) {
+            if(!$form->isValid($this->request->getPost())) {
+               $form->error = true;
+               $this->flash->error('Error ! Please check your information submitted !');
+            } else {
+                $comment = new Comments();
+                $now = new Datetime('now');
+                $comment->assign(array(
+                    'mail' => $this->request->getPost('mail', 'striptags'),
+                    'username' => $this->request->getPost('username', 'striptags'),
+                    'content' => $this->request->getPost('content', 'striptags'),
+                    'post_id' => $this->view->post->id,
+                    'created' => $now->format('Y-m-d H:i:s')
+                ));
+
+                if(!$comment->save())
+                    $this->flash->error('Error on save ! Please contact your system administrator !');
+                else
+                    Tag::resetInput();             
+            }
+        }
+        $this->view->form = $form;
     }
 
 }

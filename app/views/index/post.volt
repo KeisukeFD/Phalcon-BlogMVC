@@ -19,28 +19,30 @@
 
     <h3>Comment this post</h3>
 
-    <div class="alert alert-danger"><strong>Oh snap !</strong> you did some errors</div>
+    {% if form.error %}
+    {{ get_content() }}
+    {% endif %}
 
-    <form method="post" role="form">
+    {{ form(post.slug, 'method': 'post') }}
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group {% if form.hasMessagesFor('mail') %}has-error{% endif %}">
                     {{ form.render('mail', ['class': 'form-control']) }}
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group {% if form.hasMessagesFor('username') %}has-error{% endif %}">
                     {{ form.render('username', ['class': 'form-control']) }}
                 </div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group {% if form.hasMessagesFor('content') %}has-error{% endif %}">
                 {{ form.render('content', ['class': 'form-control']) }}
         </div>
         <div class="form-group">
             {{ form.render('Submit my comment', ['class': 'btn btn-primary']) }}    
         </div>
-    </form>
+    {{ end_form() }}
 
     <h3>{{ post.comments|length }} {% if post.comments|length > 1 %}Commentaires{% else %}Commentaire{% endif %}</h3>
 
