@@ -6,7 +6,7 @@
         <p class="lead">Authentication</p>
     </div>
 
-    <form action="#" class="form-signin" role="form">
+    <form method="post" class="form-signin" role="form">
 
         <div class="form-group">
             {{ form.render('username', ['class':'form-control']) }}

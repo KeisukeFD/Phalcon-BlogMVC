@@ -23,6 +23,9 @@ class IndexController extends ControllerBase
     public function postAction() {
         $slug = $this->dispatcher->getParam("slug");
         $this->view->post = Posts::findFirstBySlug($slug);
+
+        include_once __DIR__ . '/../forms/CommentForm.php';
+        $this->view->form = new CommentForm();
     }
 
 }

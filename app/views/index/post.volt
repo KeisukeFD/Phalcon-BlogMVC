@@ -21,24 +21,24 @@
 
     <div class="alert alert-danger"><strong>Oh snap !</strong> you did some errors</div>
 
-    <form role="form">
+    <form method="post" role="form">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Your email">
+                    {{ form.render('mail', ['class': 'form-control']) }}
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group has-error">
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Your username">
+                <div class="form-group">
+                    {{ form.render('username', ['class': 'form-control']) }}
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <textarea class="form-control" rows="3" placeholder="Your comment"></textarea>
+                {{ form.render('content', ['class': 'form-control']) }}
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            {{ form.render('Submit my comment', ['class': 'btn btn-primary']) }}    
         </div>
     </form>
 
