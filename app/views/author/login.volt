@@ -1,4 +1,4 @@
-{% extends "layouts/main.volt" %}
+{% extends "layouts/login.volt" %}
 
 {% block content %}
     <div class="page-header">

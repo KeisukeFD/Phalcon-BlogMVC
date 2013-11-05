@@ -9,6 +9,11 @@ $router->add('/category/{slug}', array(
 )->setName('category');
 
 
+$router->add('/admin', array(
+    'controller' => 'admin',
+    'action' => 'index')
+);
+
 $router->add('/users/login', array(
     'controller' => 'author',
     'action' => 'login')
